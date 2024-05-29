@@ -415,10 +415,20 @@ class Mulher extends PessoaIMC{
 class MinhaListaOrdenavel{
 	private ArrayList<PessoaIMC> list;
 
+	private String ALFABETICA_DECRESC = "1.Alfabetica (A-Z) – nome da pessoa";
+	private String ALFABETICA_CRES = "2.Alfabetica (Z-A) – nome da pessoa"; 
+	private String PESO_CRES = "3.Menor Peso - crescente";
+	private String PESO_DECRES = "4.Maior Peso - decrescente";
+	private String ALTURA_CRESC = "5.Menor Altura – crescente, do mais baixo para o mais alto";
+	private String IMC_CRESC = "6.Menor IMC - crescente, do mais baixo para o mais alto";
+	private String GENERO = "6.Homem / Mulher – ordenar por gênero";
+	
+
 	public MinhaListaOrdenavel (){
 		this.list = new ArrayList<>();
 	}
 
+	//Instance methods
 	public void add (PessoaIMC p){
 		this.list.add(p);
 	}
@@ -427,7 +437,25 @@ class MinhaListaOrdenavel{
 		return (PessoaIMC) this.list.get(i);
 	}
 
-	
+	//Inner Class
+	public Comparator pesoC = new Comparator () {
+		public int compare (Object p1, Object p2){
+		PessoaIMC pessoaP1 = (PessoaIMC) p1;
+		PessoaIMC pessoaP2 = (PessoaIMC) p2;
+		float pf1, pf2;
+		pf2 = pessoaP2.getPeso();
+		pf1 = pessoaP1.getPeso();
+		return (int) Math.round (pf2 - pf1);
+		}
+	};
+
+	public Comparator nomeC;
+	public Comparator imcC;
+	public Comparator pessoaC;
+	public Comparator idadeC;
+	public Comparator dataNascC;
+	public Comparator cpfC;
+
 }
 
 class Programa{
