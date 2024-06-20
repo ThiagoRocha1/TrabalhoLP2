@@ -1,9 +1,10 @@
 package lp2g34.biblioteca;
 
-class CopiaNaoDisponivelEx  extends Exception {
+public class CopiaNaoDisponivelEx  extends Exception {
     private String titulo;
 
     public CopiaNaoDisponivelEx (String nomeDoLivro){
+        super();
         this.titulo = nomeDoLivro;
     }
 

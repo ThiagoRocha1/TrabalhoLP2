@@ -1,29 +1,46 @@
 package lp2g34.biblioteca;
 
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
 public class Livro {
     private int codigo;
     private String titulo;
     private String categoria;
     private int quantidadeDeCopias;
-    private int quantidadeDeEmprestimos;
+    private int Emprestados;
+    private ArrayList<EmprestPara> hist;
 
     public Livro (int newCodigo, String newTitulo, String newCategoria, int newQuantidadeDeCopias ){
         this.codigo = newCodigo;
         this.titulo = newTitulo;
         this.categoria = newCategoria;
         this.quantidadeDeCopias = newQuantidadeDeCopias;
-        this.quantidadeDeEmprestimos = 0;
+        this.Emprestados = 0;
     }
 
 
     //methods
     public void empresta() throws CopiaNaoDisponivelEx{
-        int verificacaoQuantidade = this.quantidadeDeCopias - this.quantidadeDeEmprestimos;
+        int verificacaoQuantidade = this.quantidadeDeCopias - this.Emprestados;
         if(verificacaoQuantidade <=0){
             throw new CopiaNaoDisponivelEx(this.titulo);
         }else{
-            this.quantidadeDeEmprestimos += 1;
+            this.Emprestados += 1;
         }
+    }
+
+    public void devolve() throws NenhumaCopiaEmprestadaEx{
+        if(this.Emprestados == 0){
+            throw new NenhumaCopiaEmprestadaEx();
+        }else{
+            this.Emprestados -= 1;
+        }
+    }
+
+    public void addUsuarioHist(GregorianCalendar dataLocacao,GregorianCalendar dataDevolucao, long cpf){
+        EmprestPara livroEmprestado = new EmprestPara(dataLocacao,dataDevolucao,cpf);
+        hist.add(livroEmprestado);
     }
 
     //getters
@@ -43,8 +60,12 @@ public class Livro {
         return quantidadeDeCopias;
     }
 
-    public int getQuantidadeDeEmprestimos() {
-        return quantidadeDeEmprestimos;
+    public int getEmprestados() {
+        return Emprestados;
+    }
+
+    public ArrayList<EmprestPara> getHist() {
+        return hist;
     }
 
     //setters
@@ -64,8 +85,8 @@ public class Livro {
         this.quantidadeDeCopias = quantidadeDeCopias;
     }
 
-    public void setQuantidadeDeEmprestimos(int quantidadeDeEmprestimos) {
-        this.quantidadeDeEmprestimos = quantidadeDeEmprestimos;
+    public void setEmprestados(int Emprestados) {
+        this.Emprestados = Emprestados;
     }
 
     public String toString(){
@@ -73,7 +94,8 @@ public class Livro {
                 "Codigo: " + Integer.toString(this.codigo) + "\n" +
                 "Categoria: " + this.categoria + "\n" + 
                 "Quantidade de copias: " + Integer.toString(this.quantidadeDeCopias) + "\n" +
-                "Quantidade de emprestimos: " + Integer.toHexString(this.quantidadeDeEmprestimos);
+                "Quantidade de emprestimos: " + Integer.toString(this.Emprestados) + "\n"+ 
+                "Historico: " + "\n" + this.hist.toString();
 
     }
 

@@ -30,6 +30,10 @@ public class Emprest {
         this.dataDevolucao = dataDevolucao;
     }
 
+    public void setDataEmprestimo(GregorianCalendar dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
+    }
+
     public void setCodigoLivro(int newCodigo) {
         this.codigoLivro = newCodigo;
     }

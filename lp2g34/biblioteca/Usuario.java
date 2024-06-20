@@ -43,6 +43,6 @@ public class Usuario extends Pessoa {
     }
 
     public String toString(){
-        return super.toString() + "Endereco: " + this.endereco;
+        return super.toString() + "Endereco: " + this.endereco + "\n" + "Historico: " + "\n" + this.hist.toString();
     }
 }
