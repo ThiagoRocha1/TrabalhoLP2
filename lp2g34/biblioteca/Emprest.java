@@ -4,11 +4,12 @@ import java.util.GregorianCalendar;
 
 public class Emprest {
     private GregorianCalendar dataEmprestimo;
-    private GregorianCalendar dataDevolucao = null;
+    private GregorianCalendar dataDevolucao;
     private int codigoLivro;
 
     public Emprest(GregorianCalendar data, int codigo){
         this.dataEmprestimo = data;
+        this.dataDevolucao = null;
         this.codigoLivro = codigo; 
     }
 

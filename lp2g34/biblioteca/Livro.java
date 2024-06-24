@@ -1,9 +1,10 @@
 package lp2g34.biblioteca;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-public class Livro {
+public class Livro implements Serializable{
     private int codigo;
     private String titulo;
     private String categoria;
@@ -17,6 +18,7 @@ public class Livro {
         this.categoria = newCategoria;
         this.quantidadeDeCopias = newQuantidadeDeCopias;
         this.Emprestados = 0;
+        this.hist = new ArrayList<EmprestPara>();
     }
 
 
@@ -38,9 +40,9 @@ public class Livro {
         }
     }
 
-    public void addUsuarioHist(GregorianCalendar dataLocacao,GregorianCalendar dataDevolucao, long cpf){
-        EmprestPara livroEmprestado = new EmprestPara(dataLocacao,dataDevolucao,cpf);
-        hist.add(livroEmprestado);
+    public void addUsuarioHist(GregorianCalendar dataLocacao, long cpf){
+        EmprestPara livroEmprestado = new EmprestPara(dataLocacao,cpf);
+        this.hist.add(livroEmprestado);
     }
 
     //getters
@@ -89,13 +91,21 @@ public class Livro {
         this.Emprestados = Emprestados;
     }
 
+
+    @Override
     public String toString(){
+        String histLivros;
+        if(this.hist == null){
+            histLivros = "Nenhum livro emprestado";
+        }else{
+            histLivros = this.hist.toString();
+        }
         return "Titulo: " + this.titulo + "\n" +
                 "Codigo: " + Integer.toString(this.codigo) + "\n" +
                 "Categoria: " + this.categoria + "\n" + 
                 "Quantidade de copias: " + Integer.toString(this.quantidadeDeCopias) + "\n" +
                 "Quantidade de emprestimos: " + Integer.toString(this.Emprestados) + "\n"+ 
-                "Historico: " + "\n" + this.hist.toString();
+                "Historico: " + "\n" + histLivros + "\n";
 
     }
 

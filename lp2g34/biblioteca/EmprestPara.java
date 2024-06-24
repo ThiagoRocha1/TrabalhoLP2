@@ -7,9 +7,9 @@ public class EmprestPara {
     private GregorianCalendar dataLocacao;
     private GregorianCalendar dataDevolucao;
 
-    public EmprestPara(GregorianCalendar dataLocacaoInicial,GregorianCalendar dataDevolucaoInicial,long cpfInicial){
+    public EmprestPara(GregorianCalendar dataLocacaoInicial,long cpfInicial){
         this.dataLocacao = dataLocacaoInicial;
-        this.dataDevolucao = dataDevolucaoInicial;
+        this.dataDevolucao = null;
         this.cpf = cpfInicial;
     }
 

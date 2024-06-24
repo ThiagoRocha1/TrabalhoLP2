@@ -1,7 +1,8 @@
 package lp2g34.biblioteca;
+import java.io.Serializable;
 import java.util.*;
 
-class Pessoa{
+class Pessoa implements Serializable{
 	//Atributos de classe
 	private static int numTotalDePessoas;
 

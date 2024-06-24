@@ -1,7 +1,6 @@
 package lp2g34.biblioteca;
 
-import java.util.GregorianCalendar;
-import java.util.InputMismatchException;
+import java.util.*;
 
 class ValidaCPF{
 	private static boolean isSeparadorDigitoValido(char separador){

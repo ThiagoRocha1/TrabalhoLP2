@@ -1,0 +1,23 @@
+        // Livro livro1 = new Livro(1, "O Senhor dos Anéis", "Fantasia", 10);
+        // Livro livro2 = new Livro(2, "1984", "Distopia", 1);
+        // Livro livro3 = new Livro(3, "O Código Da Vinci", "Suspense", 8);
+        // Livro livro4 = new Livro(4, "Harry Potter e a Pedra Filosofal", "Fantasia", 20);
+        // Livro livro5 = new Livro(5, "O Hobbit", "Fantasia", 12);
+
+        // Usuario usuario1 = new Usuario("João", "Silva", 1, 1, 1990,Long.parseLong("18011156729"), "Rua A, 123");
+        // Usuario usuario2 = new Usuario("Maria", "Oliveira", 2, 2, 1985, Long.parseLong("29130385814"), "Rua B, 456");
+        // Usuario usuario3 = new Usuario("Pedro", "Santos", 3, 3, 1992, Long.parseLong("13254573889"), "Rua C, 789");
+        // Usuario usuario4 = new Usuario("Ana", "Souza", 4, 4, 1988, Long.parseLong("16180096805"), "Rua D, 101");
+        // Usuario usuario5 = new Usuario("Carlos", "Pereira", 5, 5, 1980, Long.parseLong("12256563898"), "Rua E, 202");
+
+        // b.cadastraLivro(livro1);
+        // b.cadastraLivro(livro2);
+        // b.cadastraLivro(livro3);
+        // b.cadastraLivro(livro4);
+        // b.cadastraLivro(livro5);
+
+        // b.cadastraUsuario(usuario1);
+        // b.cadastraUsuario(usuario2);
+        // b.cadastraUsuario(usuario3);
+        // b.cadastraUsuario(usuario4);
+        // b.cadastraUsuario(usuario5);
