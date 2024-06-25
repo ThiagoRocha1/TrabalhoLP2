@@ -19,6 +19,7 @@ public class Usuario extends Pessoa implements Serializable{
 		super(nome,sobreNome,dia,mes,ano,cpf);
         this.endereco = endereco;
         this.hist = new ArrayList<Emprest>();
+        this.totalMultas = 0;
 	}
 
     //methods

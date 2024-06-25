@@ -43,23 +43,23 @@ public class Biblioteca {
     }
 
     //setters
-    public void cadastraUsuario(Usuario usuario){
+    public void cadastraUsuario(Usuario usuario) throws Exception{
         if(this.usuarios.get(usuario.getNumCPF()) == null){
             this.usuarios.put(usuario.getNumCPF(), usuario);
             return;
         }else{
             System.out.println("Usuario ja cadastrado.");
-            return;
+            throw new Exception();
         }
     }
     
-    public void cadastraLivro(Livro livro){
+    public void cadastraLivro(Livro livro) throws Exception{
         if(this.livros.get(livro.getCodigo()) == null){
             this.livros.put(livro.getCodigo(), livro);
             return;
         }else{
             System.out.println("Livro ja cadastrado.");
-            return;
+            throw new Exception();
         }
     }
    
@@ -129,15 +129,6 @@ public class Biblioteca {
             Usuario usuarioAdd = getUsuario(usuario.getNumCPF());
             Livro livroAdd = getLivro(livro.getCodigo());
 
-            //Verificar se o usuário possui o livro está pendente
-            // ArrayList<Emprest> auxHist = usuarioAdd.getHist();
-            // for( Emprest e : auxHist){
-            //     if(e.getCodigoLivro() ==  livroAdd.getCodigo() && e.getDataDevolucao() == null){
-            //         System.out.println("Ha um livro de mesmo codigo pendente, nao eh possivel alugar outro livro.");
-            //         return;
-            //     }
-            // }
-            
             //Adicionando o livro e usuario no historico
             livroAdd.empresta();
             GregorianCalendar dataAtual = new GregorianCalendar();
@@ -158,8 +149,6 @@ public class Biblioteca {
             //Modificar o emprest dentro do historico do aluno
             for( Emprest e : auxHist){
                 if(e.getCodigoLivro() ==  livroAdd.getCodigo() && e.getDataDevolucao() == null){
-                    //usuarioAdd.getHist().get(usuarioAdd.getHist().indexOf((Object)livroAdd)).setDataDevolucao(dataAtual);
-                    //livroAdd.getHist().get(livroAdd.getHist().indexOf((Object)livroAdd)).setDataDevolucao(dataAtual);
                     e.setDataDevolucao(dataAtual);
                     break;                    
                 }
@@ -172,7 +161,11 @@ public class Biblioteca {
                 }
 
                 //Verificando se tá com data atrasada
-                GregorianCalendar dataMaximaLocacao = (auxHist2.get(auxHist2.indexOf(e)).getDataLocacao());
+                int dia = auxHist2.get(auxHist2.indexOf(e)).getDataLocacao().get(GregorianCalendar.DAY_OF_MONTH);
+                int mes = auxHist2.get(auxHist2.indexOf(e)).getDataLocacao().get(GregorianCalendar.MONTH);
+                int ano = auxHist2.get(auxHist2.indexOf(e)).getDataLocacao().get(GregorianCalendar.YEAR);
+
+                GregorianCalendar dataMaximaLocacao =  new GregorianCalendar(ano,mes,dia);
                 dataMaximaLocacao.add(Calendar.DAY_OF_MONTH, DIAS_MAXIMO_DE_LOCACAO);
                 if(dataAtual.after(dataMaximaLocacao)){
                     usuarioAdd.setTotalMultas(VALOR_MULTA);

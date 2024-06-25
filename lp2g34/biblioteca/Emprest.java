@@ -1,8 +1,9 @@
 package lp2g34.biblioteca;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Emprest {
+public class Emprest implements Serializable {
     private GregorianCalendar dataEmprestimo;
     private GregorianCalendar dataDevolucao;
     private int codigoLivro;
